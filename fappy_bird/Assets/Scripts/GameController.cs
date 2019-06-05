@@ -10,9 +10,4 @@ public class GameController : MonoBehaviour {
 	void Start () {
         instancia = this;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 200
+  tilt: 5
 --- !u!212 &30216174
 SpriteRenderer:
   m_ObjectHideFlags: 0
