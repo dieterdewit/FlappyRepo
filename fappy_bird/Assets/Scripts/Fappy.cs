@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 
-public class Fappy : MonoBehaviour {
+public class Fappy : MonoBehaviour
+{
+
+    public delegate void PlayerDelagate();
+    public static event PlayerDelagate OnPlayerScored;
 
     public float jumpForce = 180f;
     public float tilt = 5;
@@ -17,7 +21,7 @@ public class Fappy : MonoBehaviour {
 
     void Update() 
     {
-        if (GameController.instancia.gameOver == false)
+        if (GameController.instance.gameOver == false)
         {
             if (Input.GetButtonDown("Jump"))
             {
@@ -33,20 +37,19 @@ public class Fappy : MonoBehaviour {
     {
         if (col.gameObject.tag == "OneMoreFap")
         {
-            // Add
-        }
-        
-        else if (col.gameObject.tag == "DickOnScreen")
-        {
-            rb.simulated = false;
+            OnPlayerScored();
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameController.instancia.gameOver = true;
-        Infinite.scrollingSpeed = 0;
-        Pipe.scrollingSpeed = 0;
-        PipeOrama.spawnTime = 1000000;
+        if (collision.gameObject.tag == "DickOnScreen")
+        {
+            GameController.instance.gameOver = true;
+            Infinite.scrollingSpeed = 0;
+            Pipe.scrollingSpeed = 0;
+            PipeOrama.spawnTime = 1000000;
+        }
+        
     }
 }
